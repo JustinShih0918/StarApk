@@ -22,15 +22,18 @@ public class YourService extends KiboRpcService {
         api.startMission();
         double angle = Math.sqrt(2) / 2;
 
-        //P1
-        Point P1 = new Point(10.71000, -7.780000, 4.5000);
+        //P1 10.71f, -7.76f, 4.4f
+        Point per1 = new Point(10.71000, -7.780000, 4.60000);
+        Point P1 = new Point(10.71f, -7.76f, 4.4f);
         //cam(10.71, -7.7, 4.4)
         Quaternion Q1 = new Quaternion(0f, (float) angle, 0f, (float) angle);
         //specificMoveTo(P1, Q1, "y");
         try{
-            api.moveTo(P1, Q1, false);
+            api.moveTo(per1, Q1, false);
+            api.moveTo(P1,Q1,false);
         }catch (Exception e){
-            api.moveTo(P1, Q1, false);
+            api.moveTo(per1, Q1, false);
+            api.moveTo(P1,Q1,false);
         }
         waiting();
         api.reportPoint1Arrival();
