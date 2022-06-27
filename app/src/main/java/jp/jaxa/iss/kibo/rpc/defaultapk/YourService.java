@@ -27,7 +27,11 @@ public class YourService extends KiboRpcService {
         //cam(10.71, -7.7, 4.4)
         Quaternion Q1 = new Quaternion(0f, (float) angle, 0f, (float) angle);
         //specificMoveTo(P1, Q1, "y");
-        api.moveTo(P1, Q1, false);
+        try{
+            api.moveTo(P1, Q1, false);
+        }catch (Exception e){
+            api.moveTo(P1, Q1, false);
+        }
         waiting();
         api.reportPoint1Arrival();
         waiting();
@@ -75,6 +79,7 @@ public class YourService extends KiboRpcService {
             Mat correct = api.getMatNavCam();
             api.saveMatImage(correct, "aim crash");
         }
+
         //aimLaser("target2");
         waiting();
 
